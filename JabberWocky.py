@@ -39,7 +39,7 @@ while True:
 	print("...........   ......................   ...........")
 	print(".............                        .............")
 	print(" ")
-	print("JabberWocky: Secure Storage Utility")
+	print("JabberWocky: Vigenere Cipher Utility")
 	print("-----------------------------")
 	print(" ")
 	print("1. Encrypt")
