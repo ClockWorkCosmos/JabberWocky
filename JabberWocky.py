@@ -56,7 +56,6 @@ while True:
 
 		with open(filename, "r+", encoding="utf-8") as f:
 			contents = str(f.read())
-			print(contents)
 
 			contents = [*contents]
 			encryption_key = [*encryption_key]
@@ -98,7 +97,6 @@ while True:
 
 		with open(filename, "r+", encoding="utf-8") as f:
 			contents = str(f.read())
-			print(contents)
 				
 			contents = [*contents]
 			encryption_key = [*encryption_key]
