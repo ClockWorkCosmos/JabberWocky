@@ -190,6 +190,7 @@ while True:
 				f.close()
 		except:
     			print(">> Error: FILE NOT FOUND")
+			t.sleep(2)
 
 		encryption_key = [*encryption_key]
 		for x, _ in enumerate(encryption_key):
@@ -204,6 +205,7 @@ while True:
 		break
 	else:
 		print(">> Error: INVALID SELECTION (1-6)")
+		t.sleep(2)
 
 	t.sleep(pause_rate)
 
