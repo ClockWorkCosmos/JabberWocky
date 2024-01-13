@@ -1,15 +1,15 @@
-Python; CyberSecurity; Secure storage
+Python; CyberSecurity; Secure storage; Vigenere Cipher
 
-Encrypt / decrypt files using algorithms inspired by Cipher's Cipher; Generate random, create custom, or load keys for encryption / decryption.
+Encrypt / decrypt files using an extension of Caesar's Cipher called Vigenere Cipher; Generate random, create custom, or import keys for encryption / decryption
 
 Required modules / libraries:
 
 Random
 Time
 
-Algorithm:
+Algorithm(s):
 
-Caesar's Cipher
+Vigenere Cipher
 
 1. A key is imported
   Key's are composed of two parts
