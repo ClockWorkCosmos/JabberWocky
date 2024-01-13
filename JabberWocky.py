@@ -41,7 +41,7 @@ while True:
 	print("...........   ......................   ...........")
 	print(".............                        .............")
 	print(" ")
-	print("JabberWocky: Secure Storage Locker Utility")
+	print("JabberWocky: Secure Storage Utility")
 	print("-----------------------------")
 	print(" ")
 	print("1. Encrypt")
