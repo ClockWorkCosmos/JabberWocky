@@ -7,7 +7,7 @@ Required modules / libraries:
 Random
 Time
 
-Algorithms:
+Algorithm:
 
 Caesar's Cipher
 
