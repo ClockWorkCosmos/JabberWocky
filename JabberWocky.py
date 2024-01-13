@@ -183,10 +183,13 @@ while True:
 
 	elif option == 5:
 		filename = str(input(">> Load key: "))
-
-		with open(filename, "r", encoding="utf-8") as f:
-			encryption_key = f.read()
-			f.close()
+	
+		try:
+			with open(filename, "r", encoding="utf-8") as f:
+				encryption_key = f.read()
+				f.close()
+		except:
+    			print(">> Error: FILE NOT FOUND")
 
 		encryption_key = [*encryption_key]
 		for x, _ in enumerate(encryption_key):
@@ -205,9 +208,3 @@ while True:
 	t.sleep(pause_rate)
 
 exit()
-	
-
-
-	
-	
-
