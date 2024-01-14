@@ -1,4 +1,4 @@
-Python; CyberSecurity; Secure storage; Vigenere Cipher
+Python; CyberSecurity; Vigenere Cipher
 
 Encrypt / decrypt files using an extension of Caesar's Cipher called Vigenere Cipher; Generate random, create custom, or import keys for encryption / decryption
 
