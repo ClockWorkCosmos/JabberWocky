@@ -23,8 +23,3 @@ Vigenere Cipher
 3. Each character of the imported data, imported key, and master key are converted into their corresponding ASCII chart values
 4. During encryption, values are added together and converted back into their characterized form to create the encrypted version of the data
 5. Elsewise for decryption, both key values are substracted from the encrypted data values to revert them back to their decrypted version(s)
-
-
-Footnote: this program can be further improved in security by adjusting / changing the key length, master key, magic number size, and number of times to be encrypted.
-
-
