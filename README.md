@@ -5,6 +5,8 @@ Encrypt / decrypt files using an extension of Caesar's Cipher called Vigenere Ci
 Required modules / libraries:
 1. Random
 2. Time
+3. Termcolor
+4. OS #Optional
 
 Algorithm(s):
 
