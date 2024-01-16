@@ -15,12 +15,16 @@ encrypted_content = str("")
 contents = str("")
 pause_rate = float(1.5)
 
+miscellaneous_flag = False
+
 def clear_display():
 	try:
 		os.system("CLS")
 	except:
 		for x in range(0, 20):
 			print(" ")
+def prRed(skk): 
+	print("\033[91m {}\033[00m" .format(skk))
 
 def prGreen(skk): 
 	print("\033[92m {}\033[00m" .format(skk))
@@ -60,7 +64,7 @@ def prBanner():
 	prBlue("3. Generate New Key")
 	prBlue("4. Create Custom Key")
 	prBlue("5. Load Key")
-	prBlue("6. Exit")
+	prRed("6. Exit")
 	print(" ")
 
 while True:
@@ -68,93 +72,126 @@ while True:
 
 	prBanner()
 	
-	option = int(input(">> Select: "))
+	miscellaneous_flag = False
+
+	try:
+		option = int(input(">> Select: "))
+	except:
+		prRed(">> Error: INVALID SELECTION (1-6)")
+		option = 0
+		option = int(0)
+		miscellaneous_flag = True
+		t.sleep(1.5)
+
 	if option == 1:
-		filename = str(input(">> Open: "))
+		if encryption_key == "":
+			prRed(">> Error: NO KEY IMPORTED; PLEASE SELECT '5' FROM MENU.")
+			t.sleep(1.5)
+		else:
+			filename = str(input(">> Open: "))
 
-		with open(filename, "r+", encoding="utf-8") as f:
-			contents = str(f.read())
+			try:
+				with open(filename, "r+", encoding="utf-8") as f:
+					contents = str(f.read())
 
-			contents = [*contents]
-			encryption_key = [*encryption_key]
-			master_key = [*master_key]
-			counter = 0
-			for x, _ in enumerate(contents):
-				contents[x] = ord(contents[x])
-				
-				encryption_key[counter] = ord(encryption_key[counter])
-				master_key[counter] = ord(master_key[counter])
-				
-				if contents[x] > 127:
-					contents[x] = contents[x]
-				else:
-					encrypted_content += str(chr(contents[x]+encryption_key[counter]+master_key[counter]))
-				
-				contents[x] = chr(contents[x])
-				encryption_key[counter] = chr(encryption_key[counter])
-				master_key[counter] = chr(master_key[counter])
+					contents = [*contents]
+					encryption_key = [*encryption_key]
+					master_key = [*master_key]
 
-				if counter == int(len(encryption_key)) - 1:
 					counter = 0
-				else:
-					counter += 1
+					for x, _ in enumerate(contents):
+						contents[x] = ord(contents[x])
+				
+						encryption_key[counter] = ord(encryption_key[counter])
+						master_key[counter] = ord(master_key[counter])
+				
+						if contents[x] <= 1:
+							contents[x] = contents[x]
+						else:
+							if contents[x]-encryption_key[counter] < 0:
+								encrypted_content += str(chr(contents[x]))
+							else:
+								encrypted_content += str(chr(contents[x]+encryption_key[counter]+master_key[counter]))
+				
+						contents[x] = chr(contents[x])
+						encryption_key[counter] = chr(encryption_key[counter])
+						master_key[counter] = chr(master_key[counter])
 
-			contents = ''.join(contents)
-			encryption_key = ''.join(encryption_key)
-			master_key = ''.join(master_key)
+						if counter == int(len(encryption_key)) - 1:
+							counter = 0
+						else:
+							counter += 1
+
+					contents = ''.join(contents)
+					encryption_key = ''.join(encryption_key)
+					master_key = ''.join(master_key)
 			
-			f.close()
+					f.close()
 
-		filename = str(input(">> Save as: "))
-		with open(filename, "w+", encoding="utf-8") as f:
-			f.write(encrypted_content)
-			encrypted_content = ""
-			f.close()
+				filename = str(input(">> Save as: "))
+				with open(filename, "w+", encoding="utf-8") as f:
+					f.write(encrypted_content)
+					encrypted_content = ""
+					f.close()
+
+				encryption_key = ""
+			except:
+				prRed(">> Error: FILE NOT FOUND")
+
 	elif option == 2:
-		filename = str(input(">> Open: "))
+		if encryption_key == "":
+			prRed(">> Error: NO KEY IMPORTED; PLEASE SELECT '5' FROM MENU.")
+			t.sleep(1.5)
+		else:
+			filename = str(input(">> Open: "))
 
-		with open(filename, "r+", encoding="utf-8") as f:
-			contents = str(f.read())
-				
-			contents = [*contents]
-			encryption_key = [*encryption_key]
-			master_key = [*master_key]
-			counter = 0
-			for x, _ in enumerate(contents):
-				contents[x] = ord(contents[x])
-				
-				encryption_key[counter] = ord(encryption_key[counter])
-				master_key[counter] = ord(master_key[counter])
-				
-				if contents[x] <= 1:
-					contents[x] = contents[x]
-				else:
-					if contents[x]-encryption_key[counter] < 0:
-						decrypted_content += str(chr(contents[x]))
-					else:
-						decrypted_content += str(chr(contents[x]-encryption_key[counter]-master_key[counter]))
-				
-				contents[x] = chr(contents[x])
-				encryption_key[counter] = chr(encryption_key[counter])
-				master_key[counter] = chr(master_key[counter])
+			try:
+				with open(filename, "r+", encoding="utf-8") as f:
+					contents = str(f.read())
 
-				if counter == int(len(encryption_key)) - 1:
+					contents = [*contents]
+					encryption_key = [*encryption_key]
+					master_key = [*master_key]
+
 					counter = 0
-				else:
-					counter += 1
-
-			contents = ''.join(contents)
-			encryption_key = ''.join(encryption_key)
-			master_key = ''.join(master_key)
-			
-			f.close()
-
-		filename = str(input(">> Save as: "))
-		with open(filename, "w+", encoding="utf-8") as f:
-			f.write(decrypted_content)
-			decrypted_content = ""
-			f.close()
+					for x, _ in enumerate(contents):
+						contents[x] = ord(contents[x])
 				
+						encryption_key[counter] = ord(encryption_key[counter])
+						master_key[counter] = ord(master_key[counter])
+				
+						if contents[x] <= 1:
+							contents[x] = contents[x]
+						else:
+							if contents[x]-encryption_key[counter] < 0:
+								decrypted_content += str(chr(contents[x]))
+							else:
+								decrypted_content += str(chr(contents[x]-encryption_key[counter]-master_key[counter]))
+				
+						contents[x] = chr(contents[x])
+						encryption_key[counter] = chr(encryption_key[counter])
+						master_key[counter] = chr(master_key[counter])
+
+						if counter == int(len(encryption_key)) - 1:
+							counter = 0
+						else:
+							counter += 1
+
+					contents = ''.join(contents)
+					encryption_key = ''.join(encryption_key)
+					master_key = ''.join(master_key)
+			
+					f.close()
+
+				filename = str(input(">> Save as: "))
+				with open(filename, "w+", encoding="utf-8") as f:
+					f.write(decrypted_content)
+					decrypted_content = ""
+					f.close()
+
+				encryption_key = ""
+			except:
+				prRed(">> Error: FILE NOT FOUND")
 	elif option == 3:
 		encryption_key = ""
 
@@ -206,8 +243,8 @@ while True:
 				encryption_key = f.read()
 				f.close()
 		except:
-			print(">> Error: FILE NOT FOUND")
-			t.sleep(2)
+			prRed(">> Error: FILE NOT FOUND")
+			t.sleep(1.5)
 
 		encryption_key = [*encryption_key]
 		for x, _ in enumerate(encryption_key):
@@ -217,12 +254,16 @@ while True:
 				encryption_key[x] = ord(encryption_key[x]) - 2
 			encryption_key[x] = chr(encryption_key[x])
 		encryption_key = str(''.join(encryption_key))
-		print(">> Using: ", encryption_key, " from ", filename)
+
+		if encryption_key != "":
+			prGreen(">> Using: " + encryption_key + " from " + filename)
+
 	elif option == 6:
 		break
 	else:
-		print(">> Error: INVALID SELECTION (1-6)")
-		t.sleep(2)
+		if miscellaneous_flag != True:
+			prRed(">> Error: INVALID SELECTION (1-6)")
+			t.sleep(1.5)
 
 	t.sleep(pause_rate)
 	clear_display()
