@@ -11,11 +11,7 @@ Algorithm(s):
 
 Vigenere Cipher
 
-1. A key is imported
-  Key's are composed of two parts
-  1. External key ( a text file containing a randomly generated or custom created key )
-  2. Internal / built-in master key ( a variable within the program )
-  3. The final character in each key is a magic number between 0 and 9. Keys are stored using a magic number (2) to adjust / increase ASCII values of each character in the key before storage
+1. A key is imported. Key's are composed of two parts. The first part is the external key ( a text file containing a randomly generated or custom created key ). The second part is the internal / built-in master key ( a variable within the program ). The final character in each key is a magic number between 0 and 9. Keys are stored using a magic number (2) to adjust / increase ASCII values of each character in the key before storage
 
 
 2. Data to encrypt / decrypt is imported
