@@ -202,7 +202,7 @@ while True:
 		magic_number = r.randint(0, 10)
 		encryption_key += str(magic_number)
 
-		print("Key: ", encryption_key)
+		prGreen("Key: " + encryption_key)
 		filename = str(input(">> Save as: "))
 
 		encryption_key = [*encryption_key]
@@ -244,6 +244,7 @@ while True:
 				f.close()
 		except:
 			prRed(">> Error: FILE NOT FOUND")
+			encryption_key = ""
 			t.sleep(1.5)
 
 		encryption_key = [*encryption_key]
