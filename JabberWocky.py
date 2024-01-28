@@ -140,49 +140,49 @@ while True:
 		else:
 			filename = str(input(">> Open: "))
 
-			#try:
-			with open(filename, "r+", encoding="utf-8") as f:
-				contents = str(f.read())
+			try:
+				with open(filename, "r+", encoding="utf-8") as f:
+					contents = str(f.read())
 
-				contents = [*contents]
-				encryption_key = [*encryption_key]
+					contents = [*contents]
+					encryption_key = [*encryption_key]
 
-				counter = 0
-				for x, _ in enumerate(contents):
-					contents[x] = ord(contents[x])
+					counter = 0
+					for x, _ in enumerate(contents):
+						contents[x] = ord(contents[x])
 				
-					encryption_key[counter] = ord(encryption_key[counter])
+						encryption_key[counter] = ord(encryption_key[counter])
 				
-					if contents[x] <= 1:
-						contents[x] = contents[x]
-					else:
-						if contents[x] - encryption_key[counter] < 0:
-							decrypted_content += str(chr(contents[x]))
+						if contents[x] <= 1:
+							contents[x] = contents[x]
 						else:
-							decrypted_content += str(chr(contents[x]-encryption_key[counter]))
+							if contents[x] - encryption_key[counter] < 0:
+								decrypted_content += str(chr(contents[x]))
+							else:
+								decrypted_content += str(chr(contents[x]-encryption_key[counter]))
 				
-					contents[x] = chr(contents[x])
-					encryption_key[counter] = chr(encryption_key[counter])
+						contents[x] = chr(contents[x])
+						encryption_key[counter] = chr(encryption_key[counter])
 
-					if counter == int(len(encryption_key)) - 1:
-						counter = 0
-					else:
-						counter += 1
+						if counter == int(len(encryption_key)) - 1:
+							counter = 0
+						else:
+							counter += 1
 
-				contents = ''.join(contents)
-				encryption_key = ''.join(encryption_key)
+					contents = ''.join(contents)
+					encryption_key = ''.join(encryption_key)
 			
-				f.close()
+					f.close()
 
-			filename = str(input(">> Save as: "))
-			with open(filename, "w+", encoding="utf-8") as f:
-				f.write(decrypted_content)
-				decrypted_content = ""
-				f.close()
+				filename = str(input(">> Save as: "))
+				with open(filename, "w+", encoding="utf-8") as f:
+					f.write(decrypted_content)
+					decrypted_content = ""
+					f.close()
 
-			encryption_key = ""
-			#except:
-			#	prRed(">> Error: FILE NOT FOUND")
+				encryption_key = ""
+			except:
+				prRed(">> Error: FILE NOT FOUND")
 	elif option == 3:
 		encryption_key = ""
 
