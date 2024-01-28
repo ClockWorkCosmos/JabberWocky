@@ -194,7 +194,7 @@ while True:
 				if encryption_key == "":
 					prRed(">> Error: NO KEY IMPORTED, SELECT '5' FROM MENU.")
 				else:
-					prRed(">> Error: FILE NOT FOUND")
+					prRed(">> Error: FILE NOT FOUND; ERROR POTENTIALLY RELATED TO DECRYPTION, ASCII VALUE FELL BELOW 0.")
 	elif option == 3:
 		encryption_key = ""
 
