@@ -191,7 +191,10 @@ while True:
 
 				encryption_key = ""
 			except:
-				prRed(">> Error: FILE NOT FOUND")
+				if encryption_key == "":
+					prRed(">> Error: NO KEY IMPORTED, SELECT '5' FROM MENU.")
+				else:
+					prRed(">> Error: FILE NOT FOUND")
 	elif option == 3:
 		encryption_key = ""
 
