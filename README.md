@@ -2,7 +2,7 @@ Python; CyberSecurity; Vigenere Cipher
 
 Encrypt / decrypt files using an extension of Caesar's Cipher called Vigenere Cipher; Generate random, create custom, or import keys for encryption / decryption
 
-* WARNING: DO NOT APPLY ENCRYPTION KEYS MORE THAN ONCE OR ELSE FILES MAY BE AT RISK FOR CORRUPTION *
+! WARNING: DO NOT APPLY ENCRYPTION KEYS MORE THAN ONCE OR ELSE FILES MAY BE AT RISK FOR CORRUPTION !
 
 Required modules / libraries:
 1. Random
