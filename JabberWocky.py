@@ -9,7 +9,6 @@ generated_keychr = int(0)
 magic_number = int(0)
 filename = str("")
 encryption_key = str("")
-master_key = str("S")
 decrypted_content = str("")
 encrypted_content = str("")
 contents = str("")
@@ -96,26 +95,23 @@ while True:
 
 					contents = [*contents]
 					encryption_key = [*encryption_key]
-					master_key = [*master_key]
 
 					counter = 0
 					for x, _ in enumerate(contents):
 						contents[x] = ord(contents[x])
 				
 						encryption_key[counter] = ord(encryption_key[counter])
-						master_key[counter] = ord(master_key[counter])
 				
 						if contents[x] <= 1:
 							contents[x] = contents[x]
 						else:
-							if contents[x]-encryption_key[counter]-master_key[counter] < 0:
+							if contents[x]-encryption_key[counter] < 0:
 								encrypted_content += str(chr(contents[x]))
 							else:
-								encrypted_content += str(chr(contents[x]+encryption_key[counter]+master_key[counter]))
+								encrypted_content += str(chr(contents[x]+encryption_key[counter]))
 				
 						contents[x] = chr(contents[x])
 						encryption_key[counter] = chr(encryption_key[counter])
-						master_key[counter] = chr(master_key[counter])
 
 						if counter == int(len(encryption_key)) - 1:
 							counter = 0
@@ -124,7 +120,6 @@ while True:
 
 					contents = ''.join(contents)
 					encryption_key = ''.join(encryption_key)
-					master_key = ''.join(master_key)
 			
 					f.close()
 
@@ -151,26 +146,20 @@ while True:
 
 					contents = [*contents]
 					encryption_key = [*encryption_key]
-					master_key = [*master_key]
 
 					counter = 0
 					for x, _ in enumerate(contents):
 						contents[x] = ord(contents[x])
 				
 						encryption_key[counter] = ord(encryption_key[counter])
-						master_key[counter] = ord(master_key[counter])
 				
 						if contents[x] <= 1:
 							contents[x] = contents[x]
 						else:
-							if contents[x]-encryption_key[counter]-master_key[counter] < 0:
-								decrypted_content += str(chr(contents[x]))
-							else:
-								decrypted_content += str(chr(contents[x]-encryption_key[counter]-master_key[counter]))
+							decrypted_content += str(chr(contents[x]-encryption_key[counter]))
 				
 						contents[x] = chr(contents[x])
 						encryption_key[counter] = chr(encryption_key[counter])
-						master_key[counter] = chr(master_key[counter])
 
 						if counter == int(len(encryption_key)) - 1:
 							counter = 0
@@ -179,7 +168,6 @@ while True:
 
 					contents = ''.join(contents)
 					encryption_key = ''.join(encryption_key)
-					master_key = ''.join(master_key)
 			
 					f.close()
 
