@@ -3,7 +3,8 @@ Python; CyberSecurity; Vigenere Cipher
 Encrypt / decrypt files using an extension of Caesar's Cipher called Vigenere Cipher; Generate random, create custom, or import keys for encryption / decryption
 
 Observed error during testing : 
-  * Certain characters with ASCII values less than 40, in combination with certain keys, may result in error during the decryption process in which the ASCII value falls out of range.
+  * Certain characters with ASCII values less than 40, in combination with certain keys, may result in error during the decryption process in which the ASCII value falls out of range. Try removing punctuation from the
+    text file.
 
 Required modules / libraries:
 1. Random
