@@ -108,7 +108,7 @@ while True:
 						if contents[x] <= 1:
 							contents[x] = contents[x]
 						else:
-							if contents[x]-encryption_key[counter] < 0:
+							if contents[x]-encryption_key[counter]-master_key[counter] < 0:
 								encrypted_content += str(chr(contents[x]))
 							else:
 								encrypted_content += str(chr(contents[x]+encryption_key[counter]+master_key[counter]))
@@ -163,7 +163,7 @@ while True:
 						if contents[x] <= 1:
 							contents[x] = contents[x]
 						else:
-							if contents[x]-encryption_key[counter] < 0:
+							if contents[x]-encryption_key[counter]-master_key[counter] < 0:
 								decrypted_content += str(chr(contents[x]))
 							else:
 								decrypted_content += str(chr(contents[x]-encryption_key[counter]-master_key[counter]))
